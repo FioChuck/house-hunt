@@ -1,0 +1,109 @@
+name: CI CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  infra:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - id: "auth"
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{secrets.GCP_SA_KEY}}
+
+      - name: "set up google cloud sdk"
+        uses: "google-github-actions/setup-gcloud@v1"
+        with:
+          version: ">= 363.0.0"
+
+      - name: "create gcs bucket for serve function code"
+        continue-on-error: true
+        run: "gcloud storage buckets create gs://${{vars.SERVE_SOURCE_GCS}}"
+
+      - name: "create public gcs bucket for html front end"
+        continue-on-error: true
+        run: gcloud storage buckets create gs://${{vars.HOST}};
+          gcloud storage buckets add-iam-policy-binding gs://${{vars.HOST}} --member=allUsers --role=roles/storage.objectViewer
+
+      # - name: "add iam publisher role to gcs"
+      #   continue-on-error: true
+      #   run:
+      #     SERVICE_ACCOUNT=$(gsutil kms serviceaccount -p ${{secrets.PROJECT}});
+      #     gcloud projects add-iam-policy-binding ${{secrets.PROJECT}} --member="serviceAccount:$SERVICE_ACCOUNT" --role='roles/pubsub.publisher'
+
+      - name: "create firestore default database"
+        continue-on-error: true
+        run: gcloud firestore databases create --location=nam5
+
+  build:
+    runs-on: ubuntu-latest
+    needs: infra
+
+    steps:
+      - uses: actions/checkout@v3
+      - id: "auth"
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{secrets.GCP_SA_KEY}}
+
+      - name: "upload serve directory as artifact"
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-directory-serve
+          path: serve
+
+      - name: "upload html artifact to google cloud storage"
+        uses: "google-github-actions/upload-cloud-storage@v1"
+        with:
+          path: "web"
+          destination: ${{vars.HOST}}
+          gzip: false
+
+      - name: "upload serve artifact to google cloud storage"
+        uses: "google-github-actions/upload-cloud-storage@v1"
+        with:
+          path: "serve"
+          destination: ${{vars.SERVE_SOURCE_GCS}}
+          gzip: true
+
+  deploy-serve:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v3
+      - id: "auth"
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{secrets.GCP_SA_KEY}}
+
+      - name: "set up google cloud sdk"
+        uses: "google-github-actions/setup-gcloud@v1"
+        with:
+          version: ">= 363.0.0"
+
+      - name: "copy source code directory"
+        run: "gsutil cp -r gs://${{vars.SERVE_SOURCE_GCS}}/serve ."
+
+      - name: "list files"
+        run: "cd serve; ls"
+
+      - name: "zip source code files"
+        run: "cd serve; ls; zip serve.zip *"
+
+      - name: "upload source code"
+        run: "gsutil cp serve/serve.zip gs://${{vars.SERVE_SOURCE_GCS}}"
+
+      - name: "deploy cloud function using gcloud"
+        continue-on-error: false
+        run:
+          "gcloud  functions deploy gemini-example-serve --region=${{vars.LOCATION}} \
+          --runtime=python39 --gen2 --entry-point=main \
+          --trigger-http \
+          --allow-unauthenticated \
+          --min-instances=1 \
+          --source=gs://${{vars.SERVE_SOURCE_GCS}}/serve.zip"
