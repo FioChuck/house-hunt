@@ -11,8 +11,7 @@ def results():
     db = firestore.client()
 
     cities_ref = db.collection("houses")
-    query = cities_ref.order_by(
-        "timeStamp", direction=firestore.Query.DESCENDING).limit(6)
+    query = cities_ref.limit(6)
     results = query.stream()
 
     outputArray = []
