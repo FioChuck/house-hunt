@@ -10,34 +10,10 @@ def results():
 
     db = firestore.client()
 
-    cities_ref = db.collection("gemini-demo-images")
+    cities_ref = db.collection("houses")
     query = cities_ref.order_by(
         "timeStamp", direction=firestore.Query.DESCENDING).limit(6)
     results = query.stream()
-
-    outputArray = []
-    outputDict = {}
-
-    for doc in results:
-        outputArray.append(doc.to_dict())
-
-    outputDict["data"] = outputArray
-
-    return outputDict
-
-
-def text_results():
-
-    if not firebase_admin._apps:
-        firebase_admin.initialize_app()
-
-    db = firestore.client()
-
-    results = (db.collection("gemini-demo-text-result")
-               .where(filter=FieldFilter("timeStamp", "!=", "null"))
-               .order_by("timeStamp", direction=firestore.Query.DESCENDING)
-               .limit(10)
-               .get())
 
     outputArray = []
     outputDict = {}
