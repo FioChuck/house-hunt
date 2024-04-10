@@ -18,7 +18,7 @@ def results():
     outputDict = {}
 
     for doc in results:
-        outputArray.append(doc.to_dict())
+        outputArray.append(doc.to_json())
 
     outputDict["data"] = outputArray
 
