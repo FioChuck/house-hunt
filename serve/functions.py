@@ -4,6 +4,13 @@ from google.cloud.firestore_v1.base_query import FieldFilter
 import json
 
 
+def replace_nan_with_empty(dict):
+    for key, value in dict.items():
+        if value == float("nan"):
+            dict[key] = 0
+    return dict
+
+
 def results():
 
     if not firebase_admin._apps:
@@ -19,10 +26,9 @@ def results():
     outputDict = {}
 
     for doc in results:
-        # val = json.dumps(doc.to_dict())
-        outputArray.append(doc.to_dict())
-        # outputArray.append(val)
+        val = replace_nan_with_empty(doc.to_dict())
+        outputArray.append(val)
 
-        outputDict["data"] = outputArray
+    outputDict["data"] = outputArray
 
     return outputDict
