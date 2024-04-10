@@ -105,15 +105,13 @@
     <div class="page-header" align="center"
         style="background-color: rgba(0, 0, 0, 0.05); border-radius: 40px;  margin-left: 100px; margin-right: 100px; height: 180px;">
 
-        <img src="image.png" alt="Gemini Logo" width="128" height="47" style="margin-top: 5px;">
-
         <h1 align=" center" style="font-size: 35px;">
-            <font face=" Poppins" color="DimGray">Multimodal Playground </font>
+            <font face=" Poppins" color="DimGray">Fiorenza House Hunt </font>
         </h1>
 
 
-        <h2 align=" center" style="font-size: 30px;">
-            <font face=" Poppins" color=##34a853>(877)-679-7361</font>
+        <h2 align=" center" style="font-size: 25px;">
+            <font face=" Poppins" color=##34a853>Morningside, Highlands, Lake Claire, Candler Park, Grant Park </font>
         </h2>
 
 
@@ -198,26 +196,24 @@
                     const imageCell = document.createElement('td');
                     const imageElement = document.createElement('img');
 
-                    functionText = "ShowImage('" + image.fileLocation + "')";
+                    functionText = "ShowImage('" + image.primary_photo + "')";
 
                     imageElement.setAttribute("onclick", functionText);
                     imageElement.style.cursor = "pointer";
                     imageElement.style.width = "60px";
                     imageElement.style.height = "80px";
-                    imageElement.src = image.fileLocation;
+                    imageElement.src = image.primary_photo;
                     //alert(image.fileLocation);
                     imageCell.appendChild(imageElement);
                     row.appendChild(imageCell);
 
                     const queryCell = document.createElement('td');
-                    // change the font size to 20 
                     queryCell.style.fontSize = "20px";
                     queryCell.style.fontFamily = "Poppins";
-                    queryCell.textContent = image.query;
+                    queryCell.textContent = image.list_price;
                     row.appendChild(queryCell);
 
                     const resultCell = document.createElement('td');
-                    // change the font size to 20 
                     resultCell.style.fontSize = "20px";
                     queryCell.style.fontFamily = "Poppins";
                     resultCell.textContent = image.result;
