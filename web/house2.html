@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>House Hunt</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("https://us-central1-fiorenza-house-hunt.cloudfunctions.net/gemini-example-serve", function (data) {
+                var output = "<table><thead><tr><th>Address</th><th>Price</th><th>Bedrooms</th><th>Bathrooms</th></tr></thead><tbody>";
+                $.each(data.houses, function (index, house) {
+                    output += "<tr><td>" + house.address + "</td><td>" + house.price + "</td><td>" + house.bedrooms + "</td><td>" + house.bathrooms + "</td></tr>";
+                });
+                output += "</tbody></table>";
+                $("#results").html(output);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>House Hunt</h1>
+    <div id="results"></div>
+</body>
+
+</html>
