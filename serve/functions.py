@@ -1,14 +1,20 @@
 import firebase_admin
 from firebase_admin import firestore
 from google.cloud.firestore_v1.base_query import FieldFilter
-import json
+import numbers
+import math
 
 
 def replace_nan_with_empty(dict):
     for key, value in dict.items():
-        if value == float("nan"):
-            dict[key] = 0
+        if is_number(value):
+            if math.isnan(value):
+                dict[key] = 0
     return dict
+
+
+def is_number(value):
+    return isinstance(value, numbers.Number)
 
 
 def results():
