@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import firestore
 from google.cloud.firestore_v1.base_query import FieldFilter
+import json
 
 
 def results():
@@ -18,8 +19,9 @@ def results():
     outputDict = {}
 
     for doc in results:
-        outputArray.append(doc.to_json())
+        val = json.dumps(doc.to_dict())
+        outputArray.append(val)
 
-    outputDict["data"] = outputArray
+        outputDict["data"] = outputArray
 
     return outputDict
