@@ -20,7 +20,7 @@ def results():
 
     for doc in results:
         # val = json.dumps(doc.to_dict())
-        outputArray.append(doc.to_dict)
+        outputArray.append(doc.to_dict())
         # outputArray.append(val)
 
         outputDict["data"] = outputArray

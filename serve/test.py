@@ -18,6 +18,6 @@ outputDict = {}
 
 for doc in results:
     # val = json.dumps(doc.to_dict())
-    outputArray.append(doc.to_dict)
+    outputArray.append(doc.to_dict())
 
     outputDict["data"] = outputArray
