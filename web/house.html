@@ -159,11 +159,16 @@
 
                     const imageCell = document.createElement('td');
                     const imageElement = document.createElement('img');
+                    const url = image.property_url;
 
-                    functionText = "ShowImage('" + image.primary_photo + "')";
-                    url = image.property_url;
 
-                    imageElement.setAttribute("onclick", functionText);
+                    // functionText = "ShowImage('" + image.primary_photo + "')'";
+
+                    // functionText = ShowImage(image.primary_photo);
+
+
+                    imageElement.setAttribute("onclick", ShowImage(image.primary_photo));
+
                     imageElement.style.cursor = "pointer";
                     imageElement.style.width = "96px";
                     imageElement.style.height = "64px";
