@@ -98,21 +98,47 @@
 
 </head>
 
+
+
 <body>
+
     <!--Create page header rounded corners- and align it to center background color-red-->
     <!-- Create a page header rounded corners- and align it to center background color-red-->
 
     <div class="page-header" align="center"
-        style="background-color: rgba(0, 0, 0, 0.05); border-radius: 40px;  margin-left: 100px; margin-right: 100px; height: 180px;">
+        style="background-color: rgba(0, 0, 0, 0.05); border-radius: 40px;  margin-left: 100px; margin-left: 100px; margin-right: 100px; height: 350px;">
 
-        <h1 align=" center" style="font-size: 35px;">
+        <h1 align=" center" style="font-size: 30px; margin-top: 10px;">
             <font face=" Poppins" color="DimGray">Fiorenza House Hunt </font>
         </h1>
 
 
-        <h2 align=" center" style="font-size: 25px;">
+        <h2 align="center" style="font-size: 25px;">
             <font face=" Poppins" color=##34a853>Morningside, Highlands, Lake Claire, Candler Park, Grant Park </font>
+
         </h2>
+
+        <h3 align="left" style="font-size: 7; margin-left: 20px;">
+            <font face="Poppins" color="DimGray">Non-Negotiables: </font>
+            <ul style="color:dimgray; font-family: Poppins; font-size: 12px; margin-top: 11px;">
+                <li>2,000+ sqft</li>
+                <li>3+/2+</li>
+                <li>Location (Morningside, Virginia Highlands, Candler Park, Lake Claire, Grant Park)</li>
+                <li>Charming older home (English Tudor / Victorian)</li>
+                <li>Well kept street (no run down houses next door. IE Reynoldstown)</li>
+            </ul>
+        </h3>
+
+        <h3 align="left" style="font-size: 7; margin-left: 20px;">
+            <font face="Poppins" color="DimGray">Nice to Have: </font>
+            <ul style="color:dimgray; font-family: Poppins; font-size: 12px; margin-top: 11px;">
+                <li>Outdoor entertainment space (at least partially flat backyard)</li>
+                <li>Front porch</li>
+                <li>Recently remodeled kitchen + bathrooms + laundry (near bedroom)</li>
+                <li>Flat front yard</li>
+                <li>Well kept street (no run down houses next door. IE Reynoldstown)</li>
+            </ul>
+        </h3>
 
 
     </div>
@@ -139,13 +165,29 @@
         <table id="image-table" class="table table rounded  table-hover">
             <thead>
                 <tr>
-                    <th style="font-size: 20px; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Image</th>
-                    <th style="font-size: 20px; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
-                        list_price</th>
-                    <th style="font-size: 20px; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
-                        Result</th>
-                    <th style="font-size: 20px; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">Date
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        Address</th>
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        Ft<sup>2</sup> </th>
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        Ppr ft<sup>2</sup></th>
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        Beds</th>
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        Baths</th>
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        <p>½ </p> Baths
+                    </th>
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        Sell Date</th>
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        Price</th>
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        Lot ft<sup>2</sup></th>
+                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        Year
                     </th>
                 </tr>
             </thead>
@@ -203,34 +245,68 @@
                     imageElement.style.width = "60px";
                     imageElement.style.height = "80px";
                     imageElement.src = image.primary_photo;
-                    //alert(image.fileLocation);
                     imageCell.appendChild(imageElement);
                     row.appendChild(imageCell);
 
-                    const queryCell = document.createElement('td');
-                    queryCell.style.fontSize = "20px";
-                    queryCell.style.fontFamily = "Poppins";
-                    queryCell.textContent = image.list_price;
-                    row.appendChild(queryCell);
+                    const streetCell = document.createElement('td');
+                    streetCell.style.fontSize = "10";
+                    streetCell.style.fontFamily = "Poppins";
+                    streetCell.textContent = image.street;
+                    row.appendChild(streetCell);
 
-                    const resultCell = document.createElement('td');
-                    resultCell.style.fontSize = "20px";
-                    queryCell.style.fontFamily = "Poppins";
-                    resultCell.textContent = image.result;
-                    row.appendChild(resultCell);
+                    const sqftCell = document.createElement('td');
+                    sqftCell.style.fontSize = "10";
+                    sqftCell.style.fontFamily = "Poppins";
+                    sqftCell.textContent = image.sqft.toLocaleString();
+                    row.appendChild(sqftCell);
 
-                    const dateCell = document.createElement('td');
-                    // format the date to yyyy-mm-dd along with time in hh:mm:ss  input is 2024-01-12T14:21:14.726Z
-                    // convert the date to yyyy-mm-dd hh:mm:ss from UTC to local time
-                    dateCell.style.fontSize = "20px";
-                    queryCell.style.fontFamily = "Poppins";
-                    const date = new Date(image.timeStamp);
+                    const price_per_sqftCell = document.createElement('td');
+                    price_per_sqftCell.style.fontSize = "10";
+                    price_per_sqftCell.style.fontFamily = "Poppins";
+                    price_per_sqftCell.textContent = image.price_per_sqft;
+                    row.appendChild(price_per_sqftCell);
+                    // 
+                    const bedsCell = document.createElement('td');
+                    bedsCell.style.fontSize = "10";
+                    bedsCell.style.fontFamily = "Poppins";
+                    bedsCell.textContent = image.beds;
+                    row.appendChild(bedsCell);
 
-                    dateCell.textContent = date.toLocaleString();
+                    const full_bathsCell = document.createElement('td');
+                    full_bathsCell.style.fontSize = "10";
+                    full_bathsCell.style.fontFamily = "Poppins";
+                    full_bathsCell.textContent = image.full_baths;
+                    row.appendChild(full_bathsCell);
 
-                    //dateCell.textContent = image.timeStamp;
-                    row.appendChild(dateCell);
+                    const half_bathsCell = document.createElement('td');
+                    half_bathsCell.style.fontSize = "10";
+                    half_bathsCell.style.fontFamily = "Poppins";
+                    half_bathsCell.textContent = image.half_baths;
+                    row.appendChild(half_bathsCell);
 
+                    const last_sold_dateCell = document.createElement('td');
+                    last_sold_dateCell.style.fontSize = "10";
+                    last_sold_dateCell.style.fontFamily = "Poppins";
+                    last_sold_dateCell.textContent = image.last_sold_date;
+                    row.appendChild(last_sold_dateCell);
+
+                    const sold_priceCell = document.createElement('td');
+                    sold_priceCell.style.fontSize = "10";
+                    sold_priceCell.style.fontFamily = "Poppins";
+                    sold_priceCell.textContent = `$${image.sold_price.toLocaleString()}`;
+                    row.appendChild(sold_priceCell);
+
+                    const lot_sqftCell = document.createElement('td');
+                    lot_sqftCell.style.fontSize = "10";
+                    lot_sqftCell.style.fontFamily = "Poppins";
+                    lot_sqftCell.textContent = image.lot_sqft.toLocaleString();
+                    row.appendChild(lot_sqftCell);
+
+                    const year_builtCell = document.createElement('td');
+                    year_builtCell.style.fontSize = "10";
+                    year_builtCell.style.fontFamily = "Poppins";
+                    year_builtCell.textContent = image.year_built;
+                    row.appendChild(year_builtCell);
 
                     tableBody.appendChild(row);
                 });
@@ -310,8 +386,8 @@
     </script>
     <!--Footer add powered by Google -->
     <div class="footer" align="center">
-        <p style="font-family: Poppins;color: rgb(105, 105, 105)">Designed and Developed by Google</p>
-        <img src="google.png" alt="Gemini Logo" width="155.625" height="50.75"
+        <p style="font-family: Poppins;color: rgb(105, 105, 105)">Designed and Developed for DJ</p>
+        <img src="image.jpg" alt="Gemini Logo" width="119" height="105"
             style="margin-left: 100px; margin-right: 100px; margin-bottom: 10px;">
     </div>
 </body>
