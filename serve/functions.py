@@ -25,7 +25,7 @@ def results():
     db = firestore.client()
 
     cities_ref = db.collection("houses")
-    query = cities_ref.limit(6)
+    query = cities_ref
     results = query.stream()
 
     outputArray = []
