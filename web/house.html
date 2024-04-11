@@ -46,9 +46,9 @@
 
         </h2>
 
-        <h3 align="left" style="font-size: 10; margin-left: 20px;">
+        <h3 align="left" style="font-size: 12; margin-left: 20px;">
             <font face="Poppins" color="DimGray">Non-Negotiables: </font>
-            <ul style="color:dimgray; font-family: Poppins; font-size: 16px; margin-top: 11px;">
+            <ul style="color:dimgray; font-family: Poppins; font-size: 18px; margin-top: 11px;">
                 <li>2,000+ sqft</li>
                 <li>3+/2+</li>
                 <li>Location (Morningside, Highlands, Candler Park, Lake Claire, Grant Park)</li>
@@ -57,9 +57,9 @@
             </ul>
         </h3>
 
-        <h3 align="left" style="font-size: 10; margin-left: 20px;">
+        <h3 align="left" style="font-size: 12; margin-left: 20px;">
             <font face="Poppins" color="DimGray">Nice to Have: </font>
-            <ul style="color:dimgray; font-family: Poppins; font-size: 16px; margin-top: 11px;">
+            <ul style="color:dimgray; font-family: Poppins; font-size: 18px; margin-top: 11px;">
                 <li>Outdoor entertainment space (at least partially flat backyard)</li>
                 <li>Front porch</li>
                 <li>Recently remodeled kitchen + bathrooms + laundry (near bedroom)</li>
@@ -69,8 +69,6 @@
 
 
     </div>
-    <!-- create div and align it on right side of the page rigth margin 100 px--->
-    <!-- Create a button to call the API -->
 
     <br>
     <!-- include div tag to show the error message -->
@@ -94,7 +92,7 @@
                     <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Ft<sup>2</sup> </th>
                     <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
-                        PPR ft<sup>2</sup></th>
+                        Ppr ft<sup>2</sup></th>
                     <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Beds</th>
                     <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
@@ -159,16 +157,11 @@
 
                     const imageCell = document.createElement('td');
                     const imageElement = document.createElement('img');
-                    const url = image.property_url;
+
+                    functionText = "ShowImage('" + image.primary_photo + "')";
 
 
-                    // functionText = "ShowImage('" + image.primary_photo + "')'";
-
-                    // functionText = ShowImage(image.primary_photo);
-
-
-                    imageElement.setAttribute("onclick", ShowImage(image.primary_photo));
-
+                    imageElement.setAttribute("onmousedown", functionText);
                     imageElement.style.cursor = "pointer";
                     imageElement.style.width = "96px";
                     imageElement.style.height = "64px";
@@ -177,34 +170,34 @@
                     row.appendChild(imageCell);
 
                     const streetCell = document.createElement('td');
-                    streetCell.style.fontSize = "12";
+                    streetCell.style.fontSize = "10";
                     streetCell.style.fontFamily = "Poppins";
                     const streetLink = document.createElement('a');
-                    streetLink.href = url;
+                    streetLink.href = `${image.property_url}`;
                     streetLink.textContent = image.street;
                     streetCell.appendChild(streetLink);
                     row.appendChild(streetCell);
 
                     const sqftCell = document.createElement('td');
-                    sqftCell.style.fontSize = "12";
+                    sqftCell.style.fontSize = "10";
                     sqftCell.style.fontFamily = "Poppins";
                     sqftCell.textContent = image.sqft.toLocaleString();
                     row.appendChild(sqftCell);
 
                     const price_per_sqftCell = document.createElement('td');
-                    price_per_sqftCell.style.fontSize = "12";
+                    price_per_sqftCell.style.fontSize = "10";
                     price_per_sqftCell.style.fontFamily = "Poppins";
-                    price_per_sqftCell.textContent = `$${image.price_per_sqft.toLocaleString()} `
+                    price_per_sqftCell.textContent = `$${image.price_per_sqft.toLocaleString()}`
                     row.appendChild(price_per_sqftCell);
                     // 
                     const bedsCell = document.createElement('td');
-                    bedsCell.style.fontSize = "12";
+                    bedsCell.style.fontSize = "10";
                     bedsCell.style.fontFamily = "Poppins";
                     bedsCell.textContent = image.beds;
                     row.appendChild(bedsCell);
 
                     const full_bathsCell = document.createElement('td');
-                    full_bathsCell.style.fontSize = "12";
+                    full_bathsCell.style.fontSize = "10";
                     full_bathsCell.style.fontFamily = "Poppins";
                     full_bathsCell.textContent = image.full_baths;
                     row.appendChild(full_bathsCell);
@@ -216,25 +209,25 @@
                     // row.appendChild(half_bathsCell);
 
                     const last_sold_dateCell = document.createElement('td');
-                    last_sold_dateCell.style.fontSize = "12";
+                    last_sold_dateCell.style.fontSize = "10";
                     last_sold_dateCell.style.fontFamily = "Poppins";
                     last_sold_dateCell.textContent = image.last_sold_date;
                     row.appendChild(last_sold_dateCell);
 
                     const sold_priceCell = document.createElement('td');
-                    sold_priceCell.style.fontSize = "12";
+                    sold_priceCell.style.fontSize = "10";
                     sold_priceCell.style.fontFamily = "Poppins";
-                    sold_priceCell.textContent = `$${image.sold_price.toLocaleString()} `;
+                    sold_priceCell.textContent = `$${image.sold_price.toLocaleString()}`;
                     row.appendChild(sold_priceCell);
 
                     const lot_sqftCell = document.createElement('td');
-                    lot_sqftCell.style.fontSize = "12";
+                    lot_sqftCell.style.fontSize = "10";
                     lot_sqftCell.style.fontFamily = "Poppins";
                     lot_sqftCell.textContent = image.lot_sqft.toLocaleString();
                     row.appendChild(lot_sqftCell);
 
                     const year_builtCell = document.createElement('td');
-                    year_builtCell.style.fontSize = "12";
+                    year_builtCell.style.fontSize = "10";
                     year_builtCell.style.fontFamily = "Poppins";
                     year_builtCell.textContent = image.year_built;
                     row.appendChild(year_builtCell);
@@ -251,7 +244,7 @@
         // create function display error messge take the http return code and display the error message
         function displayErrorMessage(httpStatusCode) {
             const errorMessage = document.querySelector('#error-message');
-            errorMessage.textContent = `HTTP error: ${httpStatusCode} `;
+            errorMessage.textContent = `HTTP error: ${httpStatusCode}`;
         }
 
 
@@ -276,20 +269,20 @@
 
             modal.innerHTML = "";
             // set the modal content)
-            modal.innerHTML = `< div class="modal-dialog" height = "100%" width = "100%" >
-                        <div class="modal-content" height="100%" width="100%">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Image</h4>
-                            </div>
-                            <div class="modal-body">
-                                <img height="100%" width="100%" src="` + imgUrl + `" >
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-        </div >`;
+            modal.innerHTML = `<div class="modal-dialog" height= "100%" width="100%">
+          <div class="modal-content" height= "100%" width="100%">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Image</h4>
+            </div>
+            <div class="modal-body">
+              <img height= "100%" width="100%" src="` + imgUrl + `" >
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>`;
             //alert (modal.innerHTML);
             // add the modal to the document body
             document.body.appendChild(modal);
