@@ -22,78 +22,6 @@
             background-color: white;
 
         }
-
-        /* The switch container */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            /* Adjust width as needed */
-            height: 34px;
-            /* Adjust height as needed */
-        }
-
-        /* Hide default checkbox */
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        /* Style the slider (round button) */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.05);
-            /* Base color for OFF state */
-            transition: .4s;
-            /* Smooth transition effect */
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            /* Adjust height as needed */
-            width: 26px;
-            /* Adjust width as needed */
-            left: 4px;
-            /* Adjust left positioning */
-            bottom: 4px;
-            /* Adjust bottom positioning */
-            background-color: white;
-            transition: .4s;
-            /* Smooth transition effect */
-        }
-
-        /* Toggle ON state */
-        input:checked+.slider {
-            background-color: rgb(234 67 53);
-            /* Color for ON state */
-        }
-
-        /* Rounded slider */
-        input:focus+.slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(26px);
-            /* Adjust slider position for ON state */
-        }
-
-        /* Rounded slider corners */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
     </style>
 
 </head>
@@ -106,7 +34,7 @@
     <!-- Create a page header rounded corners- and align it to center background color-red-->
 
     <div class="page-header" align="center"
-        style="background-color: rgba(0, 0, 0, 0.05); border-radius: 40px;  margin-left: 100px; margin-left: 100px; margin-right: 100px; height: 350px;">
+        style="background-color: rgba(0, 0, 0, 0.05); border-radius: 40px;  margin-left: 100px; margin-left: 100px; margin-right: 100px; height: 400px;">
 
         <h1 align=" center" style="font-size: 30px; margin-top: 10px;">
             <font face=" Poppins" color="DimGray">Fiorenza House Hunt </font>
@@ -118,25 +46,24 @@
 
         </h2>
 
-        <h3 align="left" style="font-size: 7; margin-left: 20px;">
+        <h3 align="left" style="font-size: 10; margin-left: 20px;">
             <font face="Poppins" color="DimGray">Non-Negotiables: </font>
-            <ul style="color:dimgray; font-family: Poppins; font-size: 12px; margin-top: 11px;">
+            <ul style="color:dimgray; font-family: Poppins; font-size: 16px; margin-top: 11px;">
                 <li>2,000+ sqft</li>
                 <li>3+/2+</li>
-                <li>Location (Morningside, Virginia Highlands, Candler Park, Lake Claire, Grant Park)</li>
+                <li>Location (Morningside, Highlands, Candler Park, Lake Claire, Grant Park)</li>
                 <li>Charming older home (English Tudor / Victorian)</li>
                 <li>Well kept street (no run down houses next door. IE Reynoldstown)</li>
             </ul>
         </h3>
 
-        <h3 align="left" style="font-size: 7; margin-left: 20px;">
+        <h3 align="left" style="font-size: 10; margin-left: 20px;">
             <font face="Poppins" color="DimGray">Nice to Have: </font>
-            <ul style="color:dimgray; font-family: Poppins; font-size: 12px; margin-top: 11px;">
+            <ul style="color:dimgray; font-family: Poppins; font-size: 16px; margin-top: 11px;">
                 <li>Outdoor entertainment space (at least partially flat backyard)</li>
                 <li>Front porch</li>
                 <li>Recently remodeled kitchen + bathrooms + laundry (near bedroom)</li>
                 <li>Flat front yard</li>
-                <li>Well kept street (no run down houses next door. IE Reynoldstown)</li>
             </ul>
         </h3>
 
@@ -144,12 +71,7 @@
     </div>
     <!-- create div and align it on right side of the page rigth margin 100 px--->
     <!-- Create a button to call the API -->
-    <div align=" right" style="margin-right: 100px;">
-        <label class="switch">
-            <input type="checkbox" onchange="timerEvent(this.checked)">
-            <span class="slider round"></span>
-        </label>
-    </div>
+
     <br>
     <!-- include div tag to show the error message -->
     <div id="error-message" style="color: red;"></div>
@@ -165,28 +87,28 @@
         <table id="image-table" class="table table rounded  table-hover">
             <thead>
                 <tr>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Image</th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Address</th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Ft<sup>2</sup> </th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
-                        Ppr ft<sup>2</sup></th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                        PPR ft<sup>2</sup></th>
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Beds</th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Baths</th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <!-- <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         <p>½ </p> Baths
-                    </th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    </th> -->
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Sell Date</th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Price</th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Lot ft<sup>2</sup></th>
-                    <th style="font-size: 10; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
+                    <th style="font-size: 12; font-family: Poppins; color: rgb(66 133 244); font-weight: normal;">
                         Year
                     </th>
                 </tr>
@@ -239,71 +161,75 @@
                     const imageElement = document.createElement('img');
 
                     functionText = "ShowImage('" + image.primary_photo + "')";
+                    url = image.property_url;
 
                     imageElement.setAttribute("onclick", functionText);
                     imageElement.style.cursor = "pointer";
-                    imageElement.style.width = "60px";
-                    imageElement.style.height = "80px";
+                    imageElement.style.width = "96px";
+                    imageElement.style.height = "64px";
                     imageElement.src = image.primary_photo;
                     imageCell.appendChild(imageElement);
                     row.appendChild(imageCell);
 
                     const streetCell = document.createElement('td');
-                    streetCell.style.fontSize = "10";
+                    streetCell.style.fontSize = "12";
                     streetCell.style.fontFamily = "Poppins";
-                    streetCell.textContent = image.street;
+                    const streetLink = document.createElement('a');
+                    streetLink.href = url;
+                    streetLink.textContent = image.street;
+                    streetCell.appendChild(streetLink);
                     row.appendChild(streetCell);
 
                     const sqftCell = document.createElement('td');
-                    sqftCell.style.fontSize = "10";
+                    sqftCell.style.fontSize = "12";
                     sqftCell.style.fontFamily = "Poppins";
                     sqftCell.textContent = image.sqft.toLocaleString();
                     row.appendChild(sqftCell);
 
                     const price_per_sqftCell = document.createElement('td');
-                    price_per_sqftCell.style.fontSize = "10";
+                    price_per_sqftCell.style.fontSize = "12";
                     price_per_sqftCell.style.fontFamily = "Poppins";
-                    price_per_sqftCell.textContent = image.price_per_sqft;
+                    price_per_sqftCell.textContent = `$${image.price_per_sqft.toLocaleString()} `
                     row.appendChild(price_per_sqftCell);
                     // 
                     const bedsCell = document.createElement('td');
-                    bedsCell.style.fontSize = "10";
+                    bedsCell.style.fontSize = "12";
                     bedsCell.style.fontFamily = "Poppins";
                     bedsCell.textContent = image.beds;
                     row.appendChild(bedsCell);
 
                     const full_bathsCell = document.createElement('td');
-                    full_bathsCell.style.fontSize = "10";
+                    full_bathsCell.style.fontSize = "12";
                     full_bathsCell.style.fontFamily = "Poppins";
                     full_bathsCell.textContent = image.full_baths;
                     row.appendChild(full_bathsCell);
 
-                    const half_bathsCell = document.createElement('td');
-                    half_bathsCell.style.fontSize = "10";
-                    half_bathsCell.style.fontFamily = "Poppins";
-                    half_bathsCell.textContent = image.half_baths;
-                    row.appendChild(half_bathsCell);
+                    // const half_bathsCell = document.createElement('td');
+                    // half_bathsCell.style.fontSize = "10";
+                    // half_bathsCell.style.fontFamily = "Poppins";
+                    // half_bathsCell.textContent = image.half_baths;
+                    // row.appendChild(half_bathsCell);
 
                     const last_sold_dateCell = document.createElement('td');
-                    last_sold_dateCell.style.fontSize = "10";
+                    last_sold_dateCell.style.fontSize = "12";
                     last_sold_dateCell.style.fontFamily = "Poppins";
                     last_sold_dateCell.textContent = image.last_sold_date;
                     row.appendChild(last_sold_dateCell);
 
                     const sold_priceCell = document.createElement('td');
-                    sold_priceCell.style.fontSize = "10";
+                    sold_priceCell.style.fontSize = "12";
                     sold_priceCell.style.fontFamily = "Poppins";
-                    sold_priceCell.textContent = `$${image.sold_price.toLocaleString()}`;
+                    sold_priceCell.textContent = `$${image.sold_price.toLocaleString()} `;
                     row.appendChild(sold_priceCell);
 
                     const lot_sqftCell = document.createElement('td');
-                    lot_sqftCell.style.fontSize = "10";
+                    lot_sqftCell.style.fontSize = "12";
                     lot_sqftCell.style.fontFamily = "Poppins";
                     lot_sqftCell.textContent = image.lot_sqft.toLocaleString();
                     row.appendChild(lot_sqftCell);
 
                     const year_builtCell = document.createElement('td');
-                    year_builtCell.style.fontSize = "10";
+                    year_builtCell.style.fontSize = "12";
                     year_builtCell.style.fontFamily = "Poppins";
                     year_builtCell.textContent = image.year_built;
                     row.appendChild(year_builtCell);
@@ -320,7 +246,7 @@
         // create function display error messge take the http return code and display the error message
         function displayErrorMessage(httpStatusCode) {
             const errorMessage = document.querySelector('#error-message');
-            errorMessage.textContent = `HTTP error: ${httpStatusCode}`;
+            errorMessage.textContent = `HTTP error: ${httpStatusCode} `;
         }
 
 
@@ -345,20 +271,20 @@
 
             modal.innerHTML = "";
             // set the modal content)
-            modal.innerHTML = `<div class="modal-dialog" height= "100%" width="100%">
-          <div class="modal-content" height= "100%" width="100%">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Image</h4>
-            </div>
-            <div class="modal-body">
-              <img height= "100%" width="100%" src="` + imgUrl + `" >
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>`;
+            modal.innerHTML = `< div class="modal-dialog" height = "100%" width = "100%" >
+                        <div class="modal-content" height="100%" width="100%">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Image</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img height="100%" width="100%" src="` + imgUrl + `" >
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+        </div >`;
             //alert (modal.innerHTML);
             // add the modal to the document body
             document.body.appendChild(modal);
